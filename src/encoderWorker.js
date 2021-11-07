@@ -1,5 +1,6 @@
 function initWorker (workerGlobalScope) {
   const WaveEncoder = require('./WaveEncoder.js');
+  const WaveEncoder24 = require('./WaveEncoder24.js');
   const WebMOpusEncoder = require('./WebMOpusEncoder.js');
   const OggOpusEncoder = require('./OggOpusEncoder.js');
 
@@ -14,8 +15,10 @@ function initWorker (workerGlobalScope) {
         let encoderModule;
         switch (mimeType) {
           case 'audio/wav':
-          case 'audio/wave':
             encoderModule = WaveEncoder;
+            break;
+          case 'audio/wave':
+            encoderModule = WaveEncoder24;
             break;
 
           case 'audio/webm':
